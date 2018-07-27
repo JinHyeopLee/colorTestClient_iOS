@@ -13,6 +13,7 @@
 		342AEC9C210AEF16007AFEAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342AEC9B210AEF16007AFEAD /* Assets.xcassets */; };
 		342AEC9F210AEF16007AFEAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 342AEC9D210AEF16007AFEAD /* LaunchScreen.storyboard */; };
 		342AECAA210AEF16007AFEAD /* colorTestClient_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342AECA9210AEF16007AFEAD /* colorTestClient_iOSTests.swift */; };
+		8593CA8734A93BBE82512769 /* Pods_colorTestClient_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2719F24AAA3D175C0BAAD065 /* Pods_colorTestClient_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2719F24AAA3D175C0BAAD065 /* Pods_colorTestClient_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_colorTestClient_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		342AEC91210AEF16007AFEAD /* colorTestClient_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = colorTestClient_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		342AEC94210AEF16007AFEAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		342AEC96210AEF16007AFEAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +38,8 @@
 		342AECA5210AEF16007AFEAD /* colorTestClient_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = colorTestClient_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		342AECA9210AEF16007AFEAD /* colorTestClient_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorTestClient_iOSTests.swift; sourceTree = "<group>"; };
 		342AECAB210AEF16007AFEAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67414B2101EDE95921193C84 /* Pods-colorTestClient_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-colorTestClient_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-colorTestClient_iOS/Pods-colorTestClient_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		953DEA1C1EE2B17855EA8FD9 /* Pods-colorTestClient_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-colorTestClient_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-colorTestClient_iOS/Pods-colorTestClient_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8593CA8734A93BBE82512769 /* Pods_colorTestClient_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +67,8 @@
 				342AEC93210AEF16007AFEAD /* colorTestClient_iOS */,
 				342AECA8210AEF16007AFEAD /* colorTestClient_iOSTests */,
 				342AEC92210AEF16007AFEAD /* Products */,
+				9CF18D98DE7D7061D38E1821 /* Pods */,
+				AC2658F864ADDD04A9EC0D44 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +103,23 @@
 			path = colorTestClient_iOSTests;
 			sourceTree = "<group>";
 		};
+		9CF18D98DE7D7061D38E1821 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				953DEA1C1EE2B17855EA8FD9 /* Pods-colorTestClient_iOS.debug.xcconfig */,
+				67414B2101EDE95921193C84 /* Pods-colorTestClient_iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC2658F864ADDD04A9EC0D44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2719F24AAA3D175C0BAAD065 /* Pods_colorTestClient_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 342AECAE210AEF16007AFEAD /* Build configuration list for PBXNativeTarget "colorTestClient_iOS" */;
 			buildPhases = (
+				CC526F8BBA15ED57F813918C /* [CP] Check Pods Manifest.lock */,
 				342AEC8D210AEF16007AFEAD /* Sources */,
 				342AEC8E210AEF16007AFEAD /* Frameworks */,
 				342AEC8F210AEF16007AFEAD /* Resources */,
+				5CB9BEBF995BEBCC1D4AB81A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,6 +217,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5CB9BEBF995BEBCC1D4AB81A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-colorTestClient_iOS/Pods-colorTestClient_iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-colorTestClient_iOS/Pods-colorTestClient_iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC526F8BBA15ED57F813918C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-colorTestClient_iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		342AEC8D210AEF16007AFEAD /* Sources */ = {
@@ -356,6 +421,7 @@
 		};
 		342AECAF210AEF16007AFEAD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 953DEA1C1EE2B17855EA8FD9 /* Pods-colorTestClient_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -374,6 +440,7 @@
 		};
 		342AECB0210AEF16007AFEAD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67414B2101EDE95921193C84 /* Pods-colorTestClient_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
