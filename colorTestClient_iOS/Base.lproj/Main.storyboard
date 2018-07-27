@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Sub View Controller-->
         <scene sceneID="njT-W2-t4o">
             <objects>
-                <viewController id="VR1-QG-EAS" sceneMemberID="viewController">
+                <viewController id="VR1-QG-EAS" customClass="subViewController" customModule="colorTestClient_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YH5-DA-88q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,10 +92,9 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rC-xf-ABu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="xac-iN-CKB" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="ac8-Db-1cC">
                     <connections>
-                        <action selector="tapReady:" destination="xac-iN-CKB" id="1fU-D6-JIc"/>
+                        <action selector="tapReady:" destination="VR1-QG-EAS" id="Mn2-lN-xed"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

@@ -13,7 +13,7 @@
 		342AEC9C210AEF16007AFEAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342AEC9B210AEF16007AFEAD /* Assets.xcassets */; };
 		342AEC9F210AEF16007AFEAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 342AEC9D210AEF16007AFEAD /* LaunchScreen.storyboard */; };
 		342AECAA210AEF16007AFEAD /* colorTestClient_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342AECA9210AEF16007AFEAD /* colorTestClient_iOSTests.swift */; };
-		8593CA8734A93BBE82512769 /* Pods_colorTestClient_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2719F24AAA3D175C0BAAD065 /* Pods_colorTestClient_iOS.framework */; };
+		8593CA8734A93BBE82512769 /* Pods_colorTestClient_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2719F24AAA3D175C0BAAD065 /* Pods_colorTestClient_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,7 @@
 		342AECA5210AEF16007AFEAD /* colorTestClient_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = colorTestClient_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		342AECA9210AEF16007AFEAD /* colorTestClient_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorTestClient_iOSTests.swift; sourceTree = "<group>"; };
 		342AECAB210AEF16007AFEAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34D58665210B140A00E3AF26 /* SwiftSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67414B2101EDE95921193C84 /* Pods-colorTestClient_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-colorTestClient_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-colorTestClient_iOS/Pods-colorTestClient_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		953DEA1C1EE2B17855EA8FD9 /* Pods-colorTestClient_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-colorTestClient_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-colorTestClient_iOS/Pods-colorTestClient_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +116,7 @@
 		AC2658F864ADDD04A9EC0D44 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34D58665210B140A00E3AF26 /* SwiftSocket.framework */,
 				2719F24AAA3D175C0BAAD065 /* Pods_colorTestClient_iOS.framework */,
 			);
 			name = Frameworks;
