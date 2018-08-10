@@ -76,8 +76,9 @@ class subViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
         UIScreen.main.brightness = 0.5
-        changeBackgroundColor(R: 128, G: 128, B: 128, sRGB: 1, client: nil)
+        changeBackgroundColor(R: 255, G: 255, B: 255, sRGB: 1, client: nil)
     }
     
     override func prefersHomeIndicatorAutoHidden() -> Bool {
@@ -87,7 +88,30 @@ class subViewController: UIViewController {
     //MARK: Action
     @IBAction func tapReady(_ sender: UITapGestureRecognizer) {
         changeBackgroundColor(R: 255, G: 255, B: 255, sRGB: 1, client: client)
-        waitSignal(client: client)
+        DispatchQueue(label: "wait signal").sync {
+            var upperBound: CGFloat = 1
+            var lowerBound: CGFloat = 0
+            
+            while true {
+                sleep(2)
+                let rawData = self.client?.read(1024*10)
+                if let data = rawData {
+                    if data[0] == 0 {
+                        (upperBound, lowerBound) =
+                            self.brightnessAdjust(upOrDown: data[1],
+                                             upperBound: upperBound,
+                                             lowerBound: lowerBound,
+                                             client: self.client)
+                    } else if data[0] == 1 {
+                        DispatchQueue.main.async {
+                            self.changeBackgroundColor(R: data[1], G: data[2], B: data[3], sRGB: data[4], client: self.client)
+                        }
+                    } else {
+                        break
+                    }
+                }
+            }
+        }
     }
     
     //MARK: Function
@@ -98,6 +122,7 @@ class subViewController: UIViewController {
         var lowerBound: CGFloat = 0
         
         while true {
+            sleep(2)
             let rawData = client.read(1024*10)
             if let data = rawData {
                 if data[0] == 0 {
@@ -132,6 +157,7 @@ class subViewController: UIViewController {
             return
         }
         
+        sleep(1)
         _ = client.send(data: [1]) // need to change for error check
     }
     
@@ -147,17 +173,29 @@ class subViewController: UIViewController {
             var lower: CGFloat = 0
             
             if upOrDown == 0 {
+                print(upperBound)
+                print(lowerBound)
                 upper = UIScreen.main.brightness
                 lower = lowerBound
+                print(upper)
+                print(lower)
+                print("down\n")
             } else if upOrDown == 1 {
+                print(upperBound)
+                print(lowerBound)
                 upper = upperBound
                 lower = UIScreen.main.brightness
+                print(upper)
+                print(lower)
+                print("up\n")
             }
             
             UIScreen.main.brightness = (upper + lower) / 2
+            
+            sleep(1)
+            
             _ = client.send(data: [1]) // need to change for error check
             
-            return (lower, upper)
+            return (upper, lower)
     }
 }
-

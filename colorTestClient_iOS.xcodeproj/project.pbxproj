@@ -13,7 +13,7 @@
 		342AEC9C210AEF16007AFEAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 342AEC9B210AEF16007AFEAD /* Assets.xcassets */; };
 		342AEC9F210AEF16007AFEAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 342AEC9D210AEF16007AFEAD /* LaunchScreen.storyboard */; };
 		342AECAA210AEF16007AFEAD /* colorTestClient_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342AECA9210AEF16007AFEAD /* colorTestClient_iOSTests.swift */; };
-		8593CA8734A93BBE82512769 /* Pods_colorTestClient_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2719F24AAA3D175C0BAAD065 /* Pods_colorTestClient_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8593CA8734A93BBE82512769 /* Pods_colorTestClient_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2719F24AAA3D175C0BAAD065 /* Pods_colorTestClient_iOS.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
