@@ -80,28 +80,7 @@ class subViewController: UIViewController {
         UIScreen.main.brightness = 0.5
         changeBackgroundColor(R: 255, G: 255, B: 255, sRGB: 1, client: client)
         DispatchQueue(label: "wait signal").async {
-            var upperBound: CGFloat = 1
-            var lowerBound: CGFloat = 0
-            
-            while true {
-                sleep(2)
-                let rawData = self.client?.read(1024*10)
-                if let data = rawData {
-                    if data[0] == 0 {
-                        (upperBound, lowerBound) =
-                            self.brightnessAdjust(upOrDown: data[1],
-                                                  upperBound: upperBound,
-                                                  lowerBound: lowerBound,
-                                                  client: self.client)
-                    } else if data[0] == 1 {
-                        DispatchQueue.main.async {
-                            self.changeBackgroundColor(R: data[1], G: data[2], B: data[3], sRGB: data[4], client: self.client)
-                        }
-                    } else {
-                        break
-                    }
-                }
-            }
+            self.waitSignal(client: self.client)
         }
     }
     
@@ -121,18 +100,23 @@ class subViewController: UIViewController {
             let rawData = client.read(1024*10)
             if let data = rawData {
                 if data[0] == 0 {
-                    if upperBound == 1 && lowerBound == 0 {
-                        UIScreen.main.brightness = 0.5
-                    }
                     (upperBound, lowerBound) =
                         brightnessAdjust(upOrDown: data[1],
                                          upperBound: upperBound,
                                          lowerBound: lowerBound,
                                          client: client)
                 } else if data[0] == 1 {
-                    changeBackgroundColor(R: data[1], G: data[2], B: data[3], sRGB: data[4], client: client)
-                } else {
-                    break
+                    DispatchQueue.main.async {
+                        self.changeBackgroundColor(R: data[1], G: data[2], B: data[3], sRGB: data[4], client: client)
+                    }
+                } else if data[0] == 2 {
+                    upperBound = 1
+                    lowerBound = 0
+                    
+                    DispatchQueue.main.async {
+                        UIScreen.main.brightness = 0.5
+                        self.changeBackgroundColor(R: 255, G: 255, B: 255, sRGB: 1, client: client)
+                    }
                 }
             }
         }
