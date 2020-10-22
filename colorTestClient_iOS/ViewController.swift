@@ -78,7 +78,7 @@ class subViewController: UIViewController {
         
         UIApplication.shared.isIdleTimerDisabled = true
         UIScreen.main.brightness = 0.5
-        changeBackgroundColor(R: 255, G: 255, B: 255, sRGB: 1, client: client)
+        changeBackgroundColor(R: 255, G: 255, B: 255, colorSpaceSelect: 1, client: client)
         DispatchQueue(label: "wait signal").async {
             self.waitSignal(client: self.client)
         }
@@ -107,7 +107,7 @@ class subViewController: UIViewController {
                                          client: client)
                 } else if data[0] == 1 {
                     DispatchQueue.main.async {
-                        self.changeBackgroundColor(R: data[1], G: data[2], B: data[3], sRGB: data[4], client: client)
+                        self.changeBackgroundColor(R: data[1], G: data[2], B: data[3], colorSpaceSelect: data[4], client: client)
                     }
                 } else if data[0] == 2 {
                     upperBound = 1
@@ -115,23 +115,41 @@ class subViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         UIScreen.main.brightness = 0.5
-                        self.changeBackgroundColor(R: 255, G: 255, B: 255, sRGB: 1, client: client)
+                        self.changeBackgroundColor(R: 255, G: 255, B: 255, colorSpaceSelect: 1, client: client)
                     }
                 }
             }
         }
     }
     
-    func changeBackgroundColor(R: UInt8, G: UInt8, B: UInt8, sRGB: UInt8, client: TCPClient?) {
+    func changeBackgroundColor(R: UInt8, G: UInt8, B: UInt8, colorSpaceSelect: UInt8, client: TCPClient?) {
         let red: CGFloat = CGFloat(Double(R) / 255)
         let green: CGFloat = CGFloat(Double(G) / 255)
         let blue: CGFloat = CGFloat(Double(B) / 255)
         
-        if sRGB == 1 {
+        if colorSpaceSelect == 1 { // sRGB
             let color: UIColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
             self.view.backgroundColor = color
-        } else {
+        } else if colorSpaceSelect == 0 { // Display P3
             let color: UIColor = UIColor.init(displayP3Red: red, green: green, blue: blue, alpha: 1)
+            self.view.backgroundColor = color
+        } else if colorSpaceSelect == 3 { // ACESCG Linear
+            let cSpace = CGColorSpace(name: CGColorSpace.acescgLinear)!
+            let comps: [CGFloat] = [red, green, blue, 1.0]
+            let color_cg = CGColor(colorSpace: cSpace, components: comps)!
+            let color: UIColor = UIColor.init(cgColor: color_cg)
+            self.view.backgroundColor = color
+        } else if colorSpaceSelect == 2 { // AdobeRGB
+            let cSpace = CGColorSpace(name: CGColorSpace.adobeRGB1998)!
+            let comps: [CGFloat] = [red, green, blue, 1.0]
+            let color_cg = CGColor(colorSpace: cSpace, components: comps)!
+            let color: UIColor = UIColor.init(cgColor: color_cg)
+            self.view.backgroundColor = color
+        } else if colorSpaceSelect == 4 { // Rec2020
+            let cSpace = CGColorSpace(name: CGColorSpace.itur_2020)!
+            let comps: [CGFloat] = [red, green, blue, 1.0]
+            let color_cg = CGColor(colorSpace: cSpace, components: comps)!
+            let color: UIColor = UIColor.init(cgColor: color_cg)
             self.view.backgroundColor = color
         }
         
@@ -170,9 +188,19 @@ class subViewController: UIViewController {
                 print(upper)
                 print(lower)
                 print("up\n")
+            } else if upOrDown == 2 {
+                upper = 1
+                lower = 1
+                print("brightness is now max")
+            } else if upOrDown == 3 {
+                upper = 0
+                lower = 0
+                print("brightness is now min")
             }
             
-            UIScreen.main.brightness = (upper + lower) / 2
+            DispatchQueue.main.async {
+                UIScreen.main.brightness = (upper + lower) / 2
+            }
             
             sleep(1)
             
